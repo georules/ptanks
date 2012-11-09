@@ -44,11 +44,17 @@ public class GameBoard {
 	private void fix_positions(ArrayList<? extends Movable> objects)	{
 		for (Movable m : objects) {
 			Vec2D v = m.getVec();
-			if (v.x > this.x) {
-				v.x = this.x;
+			if (v.x >= this.x) {
+				v.x = this.x-1;
 			}
-			if (v.y > this.y) {
-				v.y = this.y;
+			if (v.y >= this.y) {
+				v.y = this.y-1;
+			}
+			if(v.x < 0) {
+				v.x = 0;
+			}
+			if(v.y < 0) {
+				v.y = 0;
 			}
 		}
 		

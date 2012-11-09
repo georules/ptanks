@@ -4,11 +4,11 @@ public class Game {
 	public static void main(String[] args) {
 		ArrayList<GameObject> objects = new ArrayList<GameObject>();
 		
-		GameObject o = new GameObject(new Vec2D(0,0,2,1), 1);
+		GameObject o = new GameObject(new Vec2D(2,2,0,1), 1);
 		
 		objects.add(o);
 		
-		GameBoard g = new GameBoard();
+		GameBoard g = new GameBoard(5,5);
 		
 		int turns = 10;
 		for (int i = 0; i < turns; i++) {
