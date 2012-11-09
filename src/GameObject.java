@@ -23,7 +23,6 @@ public class GameObject implements Movable, ID {
 		double radians = 1.0 * this.v.direction * Math.PI / 180.0;
 		double ycom = Math.cos(radians);
 		double xcom = Math.sin(radians);
-		System.out.println(xcom + " " +ycom);
 		this.v.x += this.v.speed * Math.round(xcom);
 		this.v.y += this.v.speed * Math.round(ycom);
 	}
