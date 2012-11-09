@@ -17,13 +17,31 @@ public class GameBoard {
 		this.x = x; this.y = y;
 		this.size = this.x * this.y;
 		tiles = new Tile[this.size];
+		for (int i = 0; i < size; i++) {
+			tiles[i] = new Tile();
+		}
 	}
 	
 	private int translate(int x, int y) {
 		return this.x * x + y;
 	}
 	
-	private void fix_positions(ArrayList<Movable> objects)	{
+	public void clear_board() {
+		for (int i = 0; i < tiles.length; i++) {
+			tiles[i] = new Tile();
+		}
+	}
+	
+	public void placeObjects(ArrayList<GameObject> objects) {
+		clear_board();
+		fix_positions(objects);
+		for (GameObject o : objects) {
+			int p = this.translate(o.v.x, o.v.y);
+			tiles[p] = new Tile(o.getID());
+		}
+	}
+	
+	private void fix_positions(ArrayList<? extends Movable> objects)	{
 		for (Movable m : objects) {
 			Vec2D v = m.getVec();
 			if (v.x > this.x) {
@@ -41,13 +59,12 @@ public class GameBoard {
 		for(int i = 0; i < x; i++) {
 			s += "| ";
 			for(int j = 0; j < y; j++) {
-				Object o;
 				int p = this.translate(i, j);
-				o = tiles[p];
-				s += o + " | ";
+				s += tiles[p].toString() + " | ";
 			}
 			s += "\n";
 		}
 		return s;
 	}
+
 }
