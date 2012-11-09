@@ -6,7 +6,7 @@ public class Tile implements ID{
 		setID(0);
 	}
 	public Tile(long i) {
-		setID(1);
+		setID(i);
 	}
 	
 	public long getID() {
