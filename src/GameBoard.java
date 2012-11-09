@@ -61,9 +61,13 @@ public class GameBoard {
 	}
 	
 	public String toString()	{
-		String s = "";
+		String s = "\t";
 		for(int i = 0; i < x; i++) {
-			s += "| ";
+			s+= "  " +i + " ";
+		}
+		s+="\n";
+		for(int i = 0; i < x; i++) {
+			s += i + "\t| ";
 			for(int j = 0; j < y; j++) {
 				int p = this.translate(i, j);
 				s += tiles[p].toString() + " | ";
