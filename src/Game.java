@@ -4,8 +4,8 @@ public class Game {
 	public static void main(String[] args) {
 		ArrayList<GameObject> objects = new ArrayList<GameObject>();
 		
-		GameObject o = new GameObject(new Vec2D(1,0,0,1), 1);
-		GameObject o2= new GameObject(new Vec2D(0,0,90,1), 2);
+		GameObject o = new GameObject(new Vec2D(1,0,0), 1);
+		GameObject o2= new GameObject(new Vec2D(0,0,90), 2);
 		objects.add(o);
 		objects.add(o2);
 		

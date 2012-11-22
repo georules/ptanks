@@ -1,14 +1,14 @@
 
-public class GameObject implements Movable, ID {
+public class GameObject implements Movable{
 	protected Vec2D v;
-	protected long id;
+	public int speed;
 	
 	public GameObject(Vec2D v) {
 		this(v, -1);
 	}
-	public GameObject(Vec2D v, long id) {
+	public GameObject(Vec2D v, int speed) {
 		putVec(v);
-		setID(id);
+		this.speed = speed;
 	}
 
 	public void putVec(Vec2D in) {
@@ -23,21 +23,11 @@ public class GameObject implements Movable, ID {
 		double radians = 1.0 * this.v.direction * Math.PI / 180.0;
 		double ycom = Math.cos(radians);
 		double xcom = Math.sin(radians);
-		this.v.x += this.v.speed * Math.round(xcom);
-		this.v.y += this.v.speed * Math.round(ycom);
-	}
-	
-	
-	public long getID() {
-		return id;
-	}
-
-	public void setID(long id) {
-		this.id = id;
+		this.v.x += this.speed * Math.round(xcom);
+		this.v.y += this.speed * Math.round(ycom);
 	}
 
 	public String toString() {
-		Long l = new Long(id);
-		return l.toString();
+		return ID.getID(this);
 	}
 }

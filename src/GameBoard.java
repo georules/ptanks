@@ -18,7 +18,7 @@ public class GameBoard {
 		this.size = this.x * this.y;
 		tiles = new Tile[this.size];
 		for (int i = 0; i < size; i++) {
-			tiles[i] = new Tile();
+			tiles[i] = new Tile("-");
 		}
 	}
 	
@@ -28,7 +28,7 @@ public class GameBoard {
 	
 	public void clear_board() {
 		for (int i = 0; i < tiles.length; i++) {
-			tiles[i] = new Tile();
+			tiles[i] = new Tile("-");
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class GameBoard {
 		fix_positions(objects);
 		for (GameObject o : objects) {
 			int p = this.translate(o.v.x, o.v.y);
-			tiles[p] = new Tile(o.getID());
+			tiles[p] = new Tile(o.toString());
 		}
 	}
 	
