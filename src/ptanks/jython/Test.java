@@ -1,6 +1,15 @@
 package ptanks.jython;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import org.python.core.PyCode;
+import org.python.core.PyException;
+import org.python.core.PyObject;
 import org.python.util.PythonInterpreter;
-import org.python.core.*;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 public class Test {
 	public static void main(String[] args) throws PyException	{
 		PythonInterpreter py = new PythonInterpreter();
@@ -22,6 +31,23 @@ public class Test {
 		}
 		catch(PyException pye)	{
 			pye.printStackTrace();
+		}
+		
+		try {
+			DefaultHttpClient client = new DefaultHttpClient();
+			HttpGet get = new HttpGet("http://bleegfeed.com/ptanks/codeserver/1");
+			HttpResponse r = client.execute(get);
+			HttpEntity data = r.getEntity();
+			BufferedReader read = new BufferedReader(new InputStreamReader(data.getContent()));
+			String line = ""; String codes = "";
+			while ((line = read.readLine()) != null)	{
+				codes += line + "\n";
+			}
+			System.out.println("Code downloaded from server\n" + codes);
+			py.exec(codes);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
 		}
 		
 		System.out.println("Python!");
