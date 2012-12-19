@@ -50,6 +50,8 @@ public class Test {
 			e.printStackTrace();
 		}
 		
+		py.exec("import sys\nprint sys.path\nfrom RestrictedPython.PrintCollector import PrintCollector");
+		
 		System.out.println("Python!");
 	}
 }
