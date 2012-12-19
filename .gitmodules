@@ -1,0 +1,3 @@
+[submodule "codeserver/epiphany"]
+	path = codeserver/epiphany
+	url = git@github.com:georules/epiphany.git
