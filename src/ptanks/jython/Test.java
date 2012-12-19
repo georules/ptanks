@@ -16,5 +16,14 @@ public class Test {
 		String s = "z = 100\nprint z";
 		PyCode code = py.compile(s);
 		py.eval(code);
+		
+		try {
+			py.exec("z = 100\nprint h");
+		}
+		catch(PyException pye)	{
+			pye.printStackTrace();
+		}
+		
+		System.out.println("Python!");
 	}
 }
