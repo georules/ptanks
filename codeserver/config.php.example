@@ -1,0 +1,10 @@
+<?php
+if(strstr($_SERVER['REQUEST_URI'],'config.php')) {
+        header('HTTP/1.0 404 Not Found');
+}
+define("DBTYPE","mysql");
+define("DBHOST","localhost");
+define("DBUSER","mysqluser");
+define("DBPASS","mysqlpass");
+define("DBNAME","mysqldatabase");
+?>
